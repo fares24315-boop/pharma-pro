@@ -244,7 +244,7 @@
     .permission-item{display:flex;align-items:center;gap:8px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface);font-size:11px;cursor:pointer}
     .permission-item input{accent-color:var(--teal)}
     @media(min-width:701px){.main::-webkit-scrollbar{width:11px}.main::-webkit-scrollbar-track{background:transparent}.main::-webkit-scrollbar-thumb{background:#7f9aa780;border-radius:20px}.main::-webkit-scrollbar-thumb:hover{background:#168f9180}}
-    @media(max-width:700px){html,body{overflow:auto!important}.app{height:auto!important;overflow:visible!important}.main{height:auto!important;overflow:visible!important}.permission-grid{grid-template-columns:1fr}.dashboard-page{padding-bottom:20px}}
+    @media(max-width:700px){html,body{overflow:auto!important;-webkit-overflow-scrolling:touch;touch-action:pan-y}.app{height:auto!important;overflow:visible!important}.main{height:auto!important;overflow:visible!important;touch-action:pan-y;-webkit-overflow-scrolling:touch}.sidebar{overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch;touch-action:pan-x}.nav{width:max-content!important;min-width:max-content!important;touch-action:pan-x}.permission-grid{grid-template-columns:1fr}.dashboard-page{padding-bottom:20px}}
   `;
   document.head.appendChild(st);
   data.users.forEach(normalizeUserPermissions);
@@ -351,8 +351,11 @@ html,body{min-height:100%;height:100%;overflow:hidden}body{line-height:1.5}butto
   .topbar .shift-pill{max-width:112px;min-width:0;padding-inline:7px}
   .topbar .shift-pill span{display:block;overflow:hidden;text-overflow:ellipsis;font-size:10px}
   .topbar .avatar{display:none}
-  .topbar .utility-strip{grid-column:2;grid-row:1;position:static;inset:auto;transform:none;width:100%;height:auto;max-width:none;padding:0;display:flex;justify-content:center;gap:4px;background:transparent;border:0;overflow:hidden}
-  .topbar .utility-action{width:31px;min-width:31px;height:31px;padding:5px;justify-content:center;border-radius:8px}
+  .topbar .utility-strip{grid-column:2;grid-row:1;position:static;inset:auto;transform:none;width:100%;height:42px;max-width:none;padding:3px 0;display:flex;justify-content:flex-start;gap:5px;background:transparent;border:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:#8daebb transparent;-webkit-overflow-scrolling:touch;touch-action:pan-x;overscroll-behavior-x:contain;scroll-snap-type:x proximity}
+  .topbar .utility-strip::-webkit-scrollbar{height:5px}
+  .topbar .utility-strip::-webkit-scrollbar-track{background:transparent}
+  .topbar .utility-strip::-webkit-scrollbar-thumb{background:#8daebb;border-radius:10px}
+  .topbar .utility-action{width:31px;min-width:31px;height:31px;padding:5px;justify-content:center;border-radius:8px;scroll-snap-align:start}
   .topbar .utility-action span{display:none}
   .topbar .utility-item{display:none}
   .topbar .utility-item#connectionStatus{display:inline-flex;width:30px;justify-content:center;overflow:hidden;font-size:0}
@@ -372,6 +375,9 @@ html,body{min-height:100%;height:100%;overflow:hidden}body{line-height:1.5}butto
   .table-wrap,.chart{overflow-x:auto;overflow-y:hidden;max-width:100%;-webkit-overflow-scrolling:touch;touch-action:pan-x}
   .table-wrap::-webkit-scrollbar,.chart::-webkit-scrollbar{height:5px}
   .table-wrap::-webkit-scrollbar-thumb,.chart::-webkit-scrollbar-thumb{background:#8daebb;border-radius:10px}
+  .main,.modal-backdrop,.modal{touch-action:pan-y;-webkit-overflow-scrolling:touch}
+  .table-wrap,.chart{touch-action:pan-x;overscroll-behavior-x:contain}
+  .topbar .utility-action{touch-action:pan-x}
   .modal{overscroll-behavior:contain}
 }
 </style>
