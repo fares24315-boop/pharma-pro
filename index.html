@@ -285,6 +285,84 @@ html,body{min-height:100%;height:100%;overflow:hidden}body{line-height:1.5}butto
 .supplier-purchase-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:10px;align-items:end}
 @media(max-width:700px){.supplier-purchase-grid{grid-template-columns:1fr 1fr}.supplier-purchase-grid .supplier-invoice-field{grid-column:1/-1}}
 </style>
+<style>
+/* Final mobile layout rules: keep controls readable and let wide data scroll locally. */
+@media(max-width:700px){
+  :root{--mobile-topbar-height:72px}
+  .topbar{height:var(--mobile-topbar-height);min-height:var(--mobile-topbar-height);padding:10px 12px;gap:8px;align-items:center}
+  .logo{min-width:0;font-size:17px;white-space:nowrap}
+  .logo span{display:none}
+  .top-meta{min-width:0;margin-inline-start:auto}
+  .shift-pill{max-width:42px;overflow:hidden;white-space:nowrap;padding:0 10px}
+  .shift-pill span{display:none}
+  .avatar{flex:0 0 34px}
+  .sidebar{position:sticky;top:var(--mobile-topbar-height);padding:8px 10px 7px;box-shadow:0 2px 10px #17324d12}
+  .side-brand,.side-footer{display:none}
+  .nav{display:flex;gap:6px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .nav button{flex:0 0 auto;width:auto;min-height:40px;padding:8px 11px;border-radius:9px;font-size:12px;white-space:nowrap}
+  .nav button svg{width:16px;height:16px}
+  .main{padding:48px 10px 40px}
+  .page-head{display:flex;flex-direction:column;align-items:stretch;gap:12px}
+  .page-head h1{font-size:21px;line-height:1.35}
+  .page-head p{font-size:12px;margin-top:4px}
+  .page-head .actions,.actions{display:flex;flex-wrap:wrap;gap:7px}
+  .page-head .actions .btn,.actions .btn{flex:1 1 135px;min-width:0}
+  .grid,.dashboard-grid,.sale-layout{grid-template-columns:1fr!important}
+  .metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px}
+  .metric{padding:12px 10px}
+  .metric b{font-size:17px}
+  .card{padding:13px 11px;border-radius:12px}
+  .card h2{font-size:16px}
+  .toolbar{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px}
+  .product{min-height:136px;padding:12px 9px}
+  .product b{font-size:12px;line-height:1.45}
+  .product strong{font-size:12px}
+  .cart-summary{order:-1}
+  .cart-row{grid-template-columns:minmax(0,1fr) auto auto!important;gap:5px;font-size:12px}
+  .cart-row .cart-unit{display:none}
+  .form-grid,.supplier-purchase-grid{grid-template-columns:1fr!important}
+  .supplier-purchase-grid .supplier-invoice-field{grid-column:auto}
+  .modal-backdrop{padding:10px;align-items:flex-start}
+  .modal{width:100%;max-width:none;margin-top:4px;padding:15px 12px;border-radius:14px}
+  .modal-actions{display:flex;flex-direction:column;gap:8px}
+  .modal-actions .btn{width:100%;flex:1 1 auto}
+  .table-wrap{margin-inline:-2px;padding-inline:2px;max-width:calc(100vw - 24px)}
+  .table{font-size:11px}
+  .table th,.table td{padding:9px 8px}
+  .utility-strip{top:var(--mobile-topbar-height);height:40px;max-width:100%;overflow:hidden;white-space:nowrap}
+  .utility-item{font-size:10px}
+  .quick-controls{top:13px;left:8px}
+}
+@media(max-width:380px){
+  .product-grid{grid-template-columns:1fr!important}
+  .metrics{grid-template-columns:1fr!important}
+  .main{padding-inline:8px}
+  .product{min-height:0}
+  .page-head .actions .btn,.actions .btn{flex-basis:100%}
+  .utility-strip{justify-content:flex-start;padding-inline:8px}
+  .utility-strip .utility-item:not(.utility-time){display:none}
+}
+@media(max-width:700px){
+  .topbar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px;padding-inline:8px}
+  .topbar .logo{grid-column:1;grid-row:1;justify-self:end}
+  .topbar .top-meta{grid-column:3;grid-row:1;justify-self:start;margin:0;min-width:0}
+  .topbar .shift-pill{max-width:112px;min-width:0;padding-inline:7px}
+  .topbar .shift-pill span{display:block;overflow:hidden;text-overflow:ellipsis;font-size:10px}
+  .topbar .avatar{display:none}
+  .topbar .utility-strip{grid-column:2;grid-row:1;position:static;inset:auto;transform:none;width:100%;height:auto;max-width:none;padding:0;display:flex;justify-content:center;gap:4px;background:transparent;border:0;overflow:hidden}
+  .topbar .utility-action{width:31px;min-width:31px;height:31px;padding:5px;justify-content:center;border-radius:8px}
+  .topbar .utility-action span{display:none}
+  .topbar .utility-item{display:none}
+  .topbar .utility-item#connectionStatus{display:inline-flex;width:30px;justify-content:center;overflow:hidden;font-size:0}
+  .topbar .utility-item#connectionStatus svg{flex:0 0 15px}
+}
+@media(max-width:380px){
+  .topbar .shift-pill{max-width:84px}
+  .topbar .utility-action{width:28px;min-width:28px}
+}
+</style>
 </head>
 <body>
 <section class="gate" id="gate"><div class="gate-card"><div class="brand-mark"><i data-lucide="pill"></i></div><h1>صيدليتي</h1><p>منصة إدارة الصيدلية اليومية وتقفيل الورديات</p><form id="loginForm"><div class="field"><label>اسم المستخدم</label><input id="username" value="admin" autocomplete="username"></div><div class="field"><label>كلمة المرور</label><input id="password" type="password" value="admin123" autocomplete="current-password"></div><div class="field"><label>كود التفعيل الصادر من الموقع</label><input id="license" autocomplete="off" placeholder="أدخل كود التفعيل"></div><button class="btn btn-primary btn-block" type="submit"><i data-lucide="log-in"></i> تفعيل وفتح النظام</button></form><p class="hint">يتم التحقق من الكود الذي تحصل عليه من موقع التفعيل.</p></div></section>
@@ -427,5 +505,7 @@ purchaseModal=function(){if(!data.suppliers.length){toast('أضف المورد �
 savePurchase=function(){const supplier=data.suppliers.find(s=>String(s.id)===String(document.getElementById('buySupplierSelect')?.value)),p=data.products.find(x=>x.id==document.getElementById('buyProduct')?.value),qty=Number(document.getElementById('buyQty')?.value),price=Number(document.getElementById('buyPrice')?.value),paid=Number(document.getElementById('buyPaid')?.value)||0,invoiceNo=document.getElementById('buyInvoiceNo')?.value.trim(),total=qty*price;if(!supplier){toast('اختر موردًا مسجلًا أولاً');return}if(!invoiceNo){toast('أدخل رقم فاتورة المورد');return}if(!p||qty<=0||price<0||paid<0||paid>total){toast('تحقق من بيانات التوريد والمدفوع');return}const date=new Date().toISOString(),id=String(Date.now()).slice(-7);p.stockBase+=(p.stripsPerPack||1)*(p.tabletsPerStrip||1)*qty;p.stock=Math.floor(p.stockBase/((p.stripsPerPack||1)*(p.tabletsPerStrip||1)));data.purchases.push({id,date,invoiceNo,supplierId:supplier.id,supplierCode:supplier.code,supplierName:supplier.name,lines:[{name:p.name,qty}],total,paid});data.supplierTransactions.push({id:Date.now()+1,supplierId:supplier.id,kind:'purchase',amount:total,note:'فاتورة مورد '+invoiceNo,date,invoiceNo});if(paid)data.supplierTransactions.push({id:Date.now()+2,supplierId:supplier.id,kind:'payment',amount:paid,note:'مدفوع لفاتورة '+invoiceNo,date,invoiceNo});save();closeModal();renderPurchases();downloadExcel('تم تسجيل التوريد وتحديث حساب المورد')};
 getGoogleSheetUrl=function(){return String(data.googleSheetUrl||GOOGLE_SHEET_URL||'').trim()};
 syncGoogleSheet=async function(){const url=getGoogleSheetUrl();if(!url){googleSyncState='الرابط غير مضبوط';updateUtilityBar();return false}if(googleSyncInFlight){googleSyncQueued=true;return false}googleSyncInFlight=true;googleSyncState='جاري الإرسال';updateUtilityBar();const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),20000);try{await fetch(url,{method:'POST',mode:'no-cors',signal:controller.signal,headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({source:'صيدليتي',savedAt:new Date().toISOString(),data})});googleSyncState='تم الإرسال إلى Google Sheets';googleLastSync=new Date().toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'});googleRetryDelay=5000;return true}catch(error){googleSyncState='تعذر الإرسال - إعادة محاولة';scheduleGoogleRetry();return false}finally{clearTimeout(timeout);googleSyncInFlight=false;updateUtilityBar();if(googleSyncQueued){googleSyncQueued=false;queueGoogleSync()}}};
+const utilityStrip=document.querySelector('.utility-strip');
+if(utilityStrip)document.querySelector('.topbar')?.appendChild(utilityStrip);
 </script>
 </body></html>
