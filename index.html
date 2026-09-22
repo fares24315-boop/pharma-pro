@@ -384,6 +384,24 @@ html,body{min-height:100%;height:100%;overflow:hidden}body{line-height:1.5}butto
   .topbar .utility-action{touch-action:pan-x}
   .modal{overscroll-behavior:contain}
 }
+@media(max-width:700px){
+  *,*::before,*::after{-webkit-tap-highlight-color:transparent}
+  button,a,input,select,textarea{touch-action:manipulation}
+  button,.btn{min-height:44px}
+  input,select,textarea{font-size:16px}
+  .main{scrollbar-width:thin;scrollbar-color:#8daebb transparent;overscroll-behavior-y:contain}
+  .main::-webkit-scrollbar{width:6px}
+  .main::-webkit-scrollbar-thumb{background:#8daebb;border-radius:10px}
+  .table-wrap,.chart,.topbar .utility-strip,.sidebar{scrollbar-width:thin;scrollbar-color:#8daebb transparent;overscroll-behavior-x:contain}
+  .table-wrap,.chart{scroll-behavior:smooth}
+  .modal-backdrop{display:none;overflow-y:auto!important;overflow-x:hidden!important;align-items:flex-start!important;padding:10px!important;touch-action:pan-y!important;-webkit-overflow-scrolling:touch}
+  .modal-backdrop.open{display:flex!important}
+  .modal{flex:0 0 auto;max-height:calc(100dvh - 20px)!important;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain;touch-action:pan-y!important;-webkit-overflow-scrolling:touch}
+  .modal-head{position:sticky;top:-15px;z-index:1;background:var(--surface);padding:4px 0 10px}
+  .actions,.modal-actions,.toolbar,.list,.permission-grid{touch-action:pan-y}
+  .list-item{min-height:48px}
+  .close,.qty button,.top-control,.utility-action{min-width:44px;min-height:44px}
+}
 </style>
 </head>
 <body>
